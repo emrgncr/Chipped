@@ -17,6 +17,9 @@ import earth.terrarium.chipped.common.palette.Palettes;
 import earth.terrarium.chipped.common.registry.base.ChippedPaletteRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -36,6 +39,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 
 import java.util.Locale;
 import java.util.Objects;
@@ -84,13 +88,14 @@ public class ModBlocks {
     public static final ChippedPaletteRegistry CLAY = createRegistry(Blocks.CLAY, Palettes.CLAY);
     public static final ChippedPaletteRegistry MUD = createRegistry(Blocks.MUD, Palettes.MUD);
     public static final ChippedPaletteRegistry PACKED_MUD = createRegistry(Blocks.PACKED_MUD, Palettes.MUD);
-    public static final ChippedPaletteRegistry ACACIA_LEAVES = createRegistry(Blocks.ACACIA_LEAVES, Palettes.LEAVES, LeavesBlock::new);
-    public static final ChippedPaletteRegistry BIRCH_LEAVES = createRegistry(Blocks.BIRCH_LEAVES, Palettes.LEAVES, LeavesBlock::new);
-    public static final ChippedPaletteRegistry DARK_OAK_LEAVES = createRegistry(Blocks.DARK_OAK_LEAVES, Palettes.LEAVES, LeavesBlock::new);
-    public static final ChippedPaletteRegistry JUNGLE_LEAVES = createRegistry(Blocks.JUNGLE_LEAVES, Palettes.LEAVES, LeavesBlock::new);
+    // TODO: b -> new UntintedParticleLeavesBlock(0.0f, null, b) did not work because leaves are now particle blocks -- I just give up hope this works - also are these block no longer leaves now?
+    public static final ChippedPaletteRegistry ACACIA_LEAVES = createRegistry(Blocks.ACACIA_LEAVES, Palettes.LEAVES, b -> new UntintedParticleLeavesBlock(0.0f, null, b));
+    public static final ChippedPaletteRegistry BIRCH_LEAVES = createRegistry(Blocks.BIRCH_LEAVES, Palettes.LEAVES, b -> new UntintedParticleLeavesBlock(0.0f, null, b));
+    public static final ChippedPaletteRegistry DARK_OAK_LEAVES = createRegistry(Blocks.DARK_OAK_LEAVES, Palettes.LEAVES, b -> new UntintedParticleLeavesBlock(0.0f, null, b));
+    public static final ChippedPaletteRegistry JUNGLE_LEAVES = createRegistry(Blocks.JUNGLE_LEAVES, Palettes.LEAVES, b -> new UntintedParticleLeavesBlock(0.0f, null, b));
     public static final ChippedPaletteRegistry MANGROVE_ROOTS = createRegistry(Blocks.MANGROVE_ROOTS, Palettes.ROOTS, MangroveRootsBlock::new);
-    public static final ChippedPaletteRegistry OAK_LEAVES = createRegistry(Blocks.OAK_LEAVES, Palettes.LEAVES, LeavesBlock::new);
-    public static final ChippedPaletteRegistry SPRUCE_LEAVES = createRegistry(Blocks.SPRUCE_LEAVES, Palettes.LEAVES, LeavesBlock::new);
+    public static final ChippedPaletteRegistry OAK_LEAVES = createRegistry(Blocks.OAK_LEAVES, Palettes.LEAVES, b -> new UntintedParticleLeavesBlock(0.0f, null, b));
+    public static final ChippedPaletteRegistry SPRUCE_LEAVES = createRegistry(Blocks.SPRUCE_LEAVES, Palettes.LEAVES, b -> new UntintedParticleLeavesBlock(0.0f, null, b));
     public static final ChippedPaletteRegistry OCHRE_FROGLIGHT = createRegistry(Blocks.OCHRE_FROGLIGHT, Palettes.FROGLIGHT);
     public static final ChippedPaletteRegistry PEARLESCENT_FROGLIGHT = createRegistry(Blocks.PEARLESCENT_FROGLIGHT, Palettes.FROGLIGHT);
     public static final ChippedPaletteRegistry VERDANT_FROGLIGHT = createRegistry(Blocks.VERDANT_FROGLIGHT, Palettes.FROGLIGHT);

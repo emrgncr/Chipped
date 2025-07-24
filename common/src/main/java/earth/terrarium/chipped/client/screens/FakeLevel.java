@@ -7,6 +7,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.teamresourceful.resourcefullib.common.exceptions.NotImplementedException;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiSpriteManager;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -97,35 +98,37 @@ public class FakeLevel implements BlockAndTintGetter {
         this.positions = positions;
     }
 
-    public void renderBlock(PoseStack poseStack) {
-        if (state == null || positions == null) return;
-        Minecraft mc = Minecraft.getInstance();
-        BlockRenderDispatcher dispatcher = mc.getBlockRenderer();
-        MultiBufferSource.BufferSource bufferSource = mc.renderBuffers().bufferSource();
-        RenderType renderType = ItemBlockRenderTypes.getRenderType(state);
-        VertexConsumer consumer = bufferSource.getBuffer(renderType);
-
-        RenderSystem.setupGui3DDiffuseLighting(SCENE_LIGHT_1, SCENE_LIGHT_2);
-
-        positions.forEach(pos -> {
-            poseStack.pushPose();
-            poseStack.translate(pos.getX(), pos.getY(), pos.getZ());
-            renderBatched(
-                dispatcher,
-                state,
-                pos,
-                this,
-                poseStack,
-                consumer,
-                true,
-                Objects.requireNonNull(mc.level).random,
-                renderType
-            );
-            poseStack.popPose();
-        });
-        bufferSource.endBatch();
-        Lighting.setupFor3DItems();
-    }
+// Claude re-wrote this, lighthing api was changed
+public void renderBlock(PoseStack poseStack) {
+    if (state == null || positions == null) return;
+    
+    Minecraft mc = Minecraft.getInstance();
+    BlockRenderDispatcher dispatcher = mc.getBlockRenderer();
+    MultiBufferSource.BufferSource bufferSource = mc.renderBuffers().bufferSource();
+    RenderType renderType = ItemBlockRenderTypes.getRenderType(state);
+    VertexConsumer consumer = bufferSource.getBuffer(renderType);
+    
+    positions.forEach(pos -> {
+        poseStack.pushPose();
+        poseStack.translate(pos.getX(), pos.getY(), pos.getZ());
+        renderBatched(
+            dispatcher,
+            state,
+            pos,
+            this,
+            poseStack,
+            consumer,
+            true,
+            Objects.requireNonNull(mc.level).random,
+            renderType
+        );
+        poseStack.popPose();
+    });
+    
+    bufferSource.endBatch();
+    
+    // No lighting reset needed - the rendering system handles this automatically
+}
 
     @ExpectPlatform
     public static void renderBatched(BlockRenderDispatcher dispatcher, BlockState state, BlockPos pos, BlockAndTintGetter level, PoseStack poseStack, VertexConsumer consumer, boolean checkSides, RandomSource random, RenderType type) {

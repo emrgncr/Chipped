@@ -1,5 +1,9 @@
 package earth.terrarium.chipped.client.screens;
 
+import java.util.List;
+
+import com.mojang.blaze3d.pipeline.RenderPipeline;
+
 import earth.terrarium.chipped.Chipped;
 import earth.terrarium.chipped.common.menus.WorkbenchMenu;
 import net.minecraft.client.Minecraft;
@@ -9,10 +13,15 @@ import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
+import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositioner;
+import net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+
 
 public class SlotWidget extends AbstractWidget {
 
@@ -35,22 +44,26 @@ public class SlotWidget extends AbstractWidget {
 
     @Override
     protected void renderWidget(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
-        graphics.blit(RenderType::guiTextured, TEXTURE, getX(), getY(), 0, 0, 18, 18, 18, 18);
+        graphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, getX(), getY(), 0, 0, 18, 18, 18, 18);
 
         boolean isHighlighted = isMouseOver(mouseX, mouseY);
         if (isHighlighted) {
-            graphics.blitSprite(RenderType::guiTextured, SLOT_HIGHLIGHT_BACK_SPRITE, getX() + 1, getY() + 1, 24, 24);
+            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_HIGHLIGHT_BACK_SPRITE, getX() + 1, getY() + 1, 24, 24);
         }
         graphics.renderItem(stack, getX() + 1, getY() + 1);
         if (isMouseOver(mouseX, mouseY)) {
-            graphics.blitSprite(RenderType::guiTextured, SLOT_HIGHLIGHT_FRONT_SPRITE, getX() + 1, getY() + 1, 24, 24);
+            graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_HIGHLIGHT_FRONT_SPRITE, getX() + 1, getY() + 1, 24, 24);
         }
     }
 
     public void renderTooltip(GuiGraphics graphics, Font font, int mouseX, int mouseY) {
         if (isMouseOver(mouseX, mouseY)) {
-            if (!stack.isEmpty()) {
-                graphics.renderTooltip(font, Screen.getTooltipFromItem(Minecraft.getInstance(), stack), stack.getTooltipImage(), mouseX, mouseY);
+            if (!stack.isEmpty() && !stack.getTooltipImage().isEmpty()) {
+                graphics.renderTooltip(font, null, mouseX, mouseY, null, SLOT_HIGHLIGHT_BACK_SPRITE);
+                graphics.renderTooltip(font,
+                        List.of(ClientTooltipComponent.create(
+                                stack.getTooltipImage().get())),
+                        mouseX, mouseY, DefaultTooltipPositioner.INSTANCE, SLOT_HIGHLIGHT_BACK_SPRITE);
             }
         }
     }

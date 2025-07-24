@@ -8,9 +8,9 @@ plugins {
     java
     id("maven-publish")
     id("com.teamresourceful.resourcefulgradle") version "0.0.+"
-    id("dev.architectury.loom") version "1.7-SNAPSHOT" apply false
+    id("dev.architectury.loom") version "1.10-SNAPSHOT" apply false
     id("architectury-plugin") version "3.4-SNAPSHOT"
-    id("com.github.johnrengelman.shadow") version "7.1.2" apply false
+    id("com.gradleup.shadow") version "8.3.6" apply false
 }
 
 architectury {
@@ -55,11 +55,11 @@ subprojects {
 
             officialMojangMappings()
 
-            parchment(create(group = "org.parchmentmc.data", name = "parchment-1.21.4", version = parchmentVersion))
+            parchment(create(group = "org.parchmentmc.data", name = "parchment-1.21.8", version = parchmentVersion))
         })
 
-        "modApi"(group = "com.teamresourceful.resourcefullib", name = "resourcefullib-$modLoader-1.21.4", version = resourcefulLibVersion)
-        "modApi"(group = "earth.terrarium.athena", name = "athena-$modLoader-1.21.4", version = athenaVersion)
+        "modApi"(group = "com.teamresourceful.resourcefullib", name = "resourcefullib-$modLoader-1.21.6", version = resourcefulLibVersion)
+        "modApi"(group = "earth.terrarium.athena", name = "athena-$modLoader-1.21.6", version = athenaVersion)
         if (isCommon) {
             "modApi"(group = "mezz.jei", name = "jei-1.21.1-common-api", version = jeiVersion)
             "modCompileOnly"(group = "me.shedaniel", name = "RoughlyEnoughItems-api", version = reiVersion)
@@ -91,7 +91,7 @@ subprojects {
     }
 
     if (!isCommon) {
-        apply(plugin = "com.github.johnrengelman.shadow")
+        apply(plugin = "com.gradleup.shadow")
         configure<ArchitectPluginExtension> {
             platformSetupLoomIde()
         }

@@ -1,5 +1,6 @@
 package earth.terrarium.chipped.client.screens;
 
+import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.teamresourceful.resourcefullib.client.screens.AbstractContainerCursorScreen;
 import com.teamresourceful.resourcefullib.client.utils.RenderUtils;
 import earth.terrarium.chipped.Chipped;
@@ -12,6 +13,7 @@ import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.layouts.GridLayout;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.network.chat.Component;
@@ -167,10 +169,14 @@ public class WorkbenchScreen extends AbstractContainerCursorScreen<WorkbenchMenu
         int left = (width - imageWidth) / 2;
         int top = (height - imageHeight) / 2;
         grid.setY(top + 41 - (int) scrollAmount);
-        try (var ignored = RenderUtils.createScissorBox(Objects.requireNonNull(minecraft), graphics.pose(), left + 84, top + 40, 163, 109)) {
+
+        try {
+            graphics.enableScissor(left + 84, top + 40, 163, 109);
             for (var widget : slotWidgets) {
                 widget.renderWidget(graphics, mouseX, mouseY, partialTick);
             }
+        } finally {
+            graphics.disableScissor();
         }
 
         for (var widget : slotWidgets) {
@@ -182,7 +188,7 @@ public class WorkbenchScreen extends AbstractContainerCursorScreen<WorkbenchMenu
     protected void renderBg(GuiGraphics graphics, float partialTick, int mouseX, int mouseY) {
         int left = (width - imageWidth) / 2;
         int top = (height - imageHeight) / 2;
-        graphics.blit(RenderType::guiTextured, TEXTURE, left, top, 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
+        graphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, left, top, 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
         graphics.drawString(font, PREVIEW_TEXT, left + 11, top + 14, 0x404040, false);
         graphics.drawCenteredString(font, hasShiftDown() ? CRAFT_ALL_TEXT : CRAFT_TEXT, left + 45, top + 106, 0x404040);
 

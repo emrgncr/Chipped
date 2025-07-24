@@ -1,7 +1,8 @@
 package earth.terrarium.chipped.client.screens;
 
 import com.mojang.math.Axis;
-import com.teamresourceful.resourcefullib.client.CloseablePoseStack;
+// import com.teamresourceful.resourcefullib.client.CloseablePoseStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.teamresourceful.resourcefullib.client.components.CursorWidget;
 import com.teamresourceful.resourcefullib.client.screens.CursorScreen;
 import net.minecraft.client.gui.GuiGraphics;
@@ -13,6 +14,9 @@ import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Matrix3x2f;
+import org.joml.Matrix3x2fStack;
+import org.joml.Matrix4f;
 
 import java.util.Set;
 import java.util.function.Supplier;
@@ -43,8 +47,28 @@ public class RenderWindowWidget extends AbstractWidget implements CursorWidget {
         BlockState state = this.state.get();
         if (state == null) return;
         boolean isDoor = state.getBlock() instanceof DoorBlock;
+        Matrix3x2fStack current2D = graphics.pose();
 
-        try (var pose = new CloseablePoseStack(graphics)) {
+        // Create a 4x4 matrix from the 2D transform
+        Matrix4f matrix4f = new Matrix4f();
+        matrix4f.identity();
+
+        // Copy the 2D transformation into the 3D matrix
+        // The 3x2 matrix maps to specific positions in the 4x4 matrix
+        matrix4f.m00(current2D.m00); // scale/rotation X
+        matrix4f.m01(current2D.m01); // rotation/skew
+        matrix4f.m10(current2D.m10); // rotation/skew  
+        matrix4f.m11(current2D.m11); // scale/rotation Y
+        matrix4f.m30(current2D.m20); // translation X
+        matrix4f.m31(current2D.m21); // translation Y
+        // Z components remain default (0,0,1,0) and (0,0,0,1)
+
+        // Now create PoseStack and apply the matrix
+        PoseStack pose = new PoseStack();
+        pose.last().pose().mul(matrix4f);
+        pose.pushPose();
+
+        try {
             pose.translate(getX(), getY(), 100);
             pose.translate(46, 46, 0);
             if (!isDoor) {
@@ -70,6 +94,9 @@ public class RenderWindowWidget extends AbstractWidget implements CursorWidget {
                 fakeLevel.setPositions(mode.positions);
                 fakeLevel.renderBlock(pose);
             }
+        }
+        finally {
+            pose.popPose();
         }
     }
 

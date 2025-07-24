@@ -18,42 +18,42 @@ public class ChippedClient {
     private static void registerRenderTypes() {
         createSetRenderType(ModBlocks.BENCHES, RenderType.cutout());
 
-        createSetRenderType(ModBlocks.ICE, RenderType.translucent());
+        createSetRenderType(ModBlocks.ICE, RenderType.translucentMovingBlock());
 
-        createSetRenderType(ModBlocks.GLASS, RenderType.translucent());
-        createSetRenderType(ModBlocks.GLASS_PANE, RenderType.translucent());
-        createSetRenderType(ModBlocks.BLACK_STAINED_GLASS, RenderType.translucent());
-        createSetRenderType(ModBlocks.BLACK_STAINED_GLASS_PANE, RenderType.translucent());
-        createSetRenderType(ModBlocks.BLUE_STAINED_GLASS, RenderType.translucent());
-        createSetRenderType(ModBlocks.BLUE_STAINED_GLASS_PANE, RenderType.translucent());
-        createSetRenderType(ModBlocks.BROWN_STAINED_GLASS, RenderType.translucent());
-        createSetRenderType(ModBlocks.BROWN_STAINED_GLASS_PANE, RenderType.translucent());
-        createSetRenderType(ModBlocks.CYAN_STAINED_GLASS, RenderType.translucent());
-        createSetRenderType(ModBlocks.CYAN_STAINED_GLASS_PANE, RenderType.translucent());
-        createSetRenderType(ModBlocks.GRAY_STAINED_GLASS, RenderType.translucent());
-        createSetRenderType(ModBlocks.GRAY_STAINED_GLASS_PANE, RenderType.translucent());
-        createSetRenderType(ModBlocks.GREEN_STAINED_GLASS, RenderType.translucent());
-        createSetRenderType(ModBlocks.GREEN_STAINED_GLASS_PANE, RenderType.translucent());
-        createSetRenderType(ModBlocks.LIGHT_BLUE_STAINED_GLASS, RenderType.translucent());
-        createSetRenderType(ModBlocks.LIGHT_BLUE_STAINED_GLASS_PANE, RenderType.translucent());
-        createSetRenderType(ModBlocks.LIGHT_GRAY_STAINED_GLASS, RenderType.translucent());
-        createSetRenderType(ModBlocks.LIGHT_GRAY_STAINED_GLASS_PANE, RenderType.translucent());
-        createSetRenderType(ModBlocks.LIME_STAINED_GLASS, RenderType.translucent());
-        createSetRenderType(ModBlocks.LIME_STAINED_GLASS_PANE, RenderType.translucent());
-        createSetRenderType(ModBlocks.MAGENTA_STAINED_GLASS, RenderType.translucent());
-        createSetRenderType(ModBlocks.MAGENTA_STAINED_GLASS_PANE, RenderType.translucent());
-        createSetRenderType(ModBlocks.ORANGE_STAINED_GLASS, RenderType.translucent());
-        createSetRenderType(ModBlocks.ORANGE_STAINED_GLASS_PANE, RenderType.translucent());
-        createSetRenderType(ModBlocks.PINK_STAINED_GLASS, RenderType.translucent());
-        createSetRenderType(ModBlocks.PINK_STAINED_GLASS_PANE, RenderType.translucent());
-        createSetRenderType(ModBlocks.PURPLE_STAINED_GLASS, RenderType.translucent());
-        createSetRenderType(ModBlocks.PURPLE_STAINED_GLASS_PANE, RenderType.translucent());
-        createSetRenderType(ModBlocks.RED_STAINED_GLASS, RenderType.translucent());
-        createSetRenderType(ModBlocks.RED_STAINED_GLASS_PANE, RenderType.translucent());
-        createSetRenderType(ModBlocks.WHITE_STAINED_GLASS, RenderType.translucent());
-        createSetRenderType(ModBlocks.WHITE_STAINED_GLASS_PANE, RenderType.translucent());
-        createSetRenderType(ModBlocks.YELLOW_STAINED_GLASS, RenderType.translucent());
-        createSetRenderType(ModBlocks.YELLOW_STAINED_GLASS_PANE, RenderType.translucent());
+        createSetRenderType(ModBlocks.GLASS, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.GLASS_PANE, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.BLACK_STAINED_GLASS, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.BLACK_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.BLUE_STAINED_GLASS, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.BLUE_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.BROWN_STAINED_GLASS, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.BROWN_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.CYAN_STAINED_GLASS, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.CYAN_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.GRAY_STAINED_GLASS, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.GRAY_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.GREEN_STAINED_GLASS, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.GREEN_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.LIGHT_BLUE_STAINED_GLASS, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.LIGHT_BLUE_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.LIGHT_GRAY_STAINED_GLASS, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.LIGHT_GRAY_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.LIME_STAINED_GLASS, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.LIME_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.MAGENTA_STAINED_GLASS, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.MAGENTA_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.ORANGE_STAINED_GLASS, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.ORANGE_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.PINK_STAINED_GLASS, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.PINK_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.PURPLE_STAINED_GLASS, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.PURPLE_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.RED_STAINED_GLASS, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.RED_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.WHITE_STAINED_GLASS, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.WHITE_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.YELLOW_STAINED_GLASS, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.YELLOW_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
 
         createSetRenderType(ModBlocks.IRON_BARS, RenderType.cutout());
 
@@ -96,8 +96,8 @@ public class ChippedClient {
 
         createSetRenderType(ModBlocks.CRIMSON_ROOTS, RenderType.cutout());
         createSetRenderType(ModBlocks.WARPED_ROOTS, RenderType.cutout());
-        createSetRenderType(ModBlocks.LANTERN, RenderType.translucent());
-        createSetRenderType(ModBlocks.SOUL_LANTERN, RenderType.translucent());
+        createSetRenderType(ModBlocks.LANTERN, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.SOUL_LANTERN, RenderType.translucentMovingBlock());
         createSetRenderType(ModBlocks.SPECIAL_LANTERN, RenderType.cutout());
         createSetRenderType(ModBlocks.SPECIAL_SOUL_LANTERN, RenderType.cutout());
         createSetRenderType(ModBlocks.LILY_PAD, RenderType.cutout());
