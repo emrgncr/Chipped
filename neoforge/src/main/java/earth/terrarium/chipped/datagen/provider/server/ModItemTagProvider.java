@@ -9,7 +9,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagEntry;
@@ -23,11 +22,13 @@ import java.util.Collection;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
-public class ModItemTagProvider extends ItemTagsProvider {
+import net.neoforged.neoforge.common.data.BlockTagCopyingItemTagProvider;
+
+public class ModItemTagProvider extends BlockTagCopyingItemTagProvider{
 
     public ModItemTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTagProvider) {
         super(output, lookupProvider, blockTagProvider, Chipped.MOD_ID);
-    }
+        }
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {

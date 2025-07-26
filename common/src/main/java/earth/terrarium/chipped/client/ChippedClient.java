@@ -5,6 +5,7 @@ import com.teamresourceful.resourcefullib.common.registry.ResourcefulRegistry;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import earth.terrarium.chipped.common.registry.ModBlocks;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.world.level.block.Block;
 
 import java.util.function.Supplier;
@@ -16,110 +17,110 @@ public class ChippedClient {
     }
 
     private static void registerRenderTypes() {
-        createSetRenderType(ModBlocks.BENCHES, RenderType.cutout());
+        createSetRenderType(ModBlocks.BENCHES, ChunkSectionLayer.CUTOUT);
 
-        createSetRenderType(ModBlocks.ICE, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.ICE, ChunkSectionLayer.TRANSLUCENT);
 
-        createSetRenderType(ModBlocks.GLASS, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.GLASS_PANE, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.BLACK_STAINED_GLASS, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.BLACK_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.BLUE_STAINED_GLASS, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.BLUE_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.BROWN_STAINED_GLASS, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.BROWN_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.CYAN_STAINED_GLASS, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.CYAN_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.GRAY_STAINED_GLASS, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.GRAY_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.GREEN_STAINED_GLASS, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.GREEN_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.LIGHT_BLUE_STAINED_GLASS, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.LIGHT_BLUE_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.LIGHT_GRAY_STAINED_GLASS, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.LIGHT_GRAY_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.LIME_STAINED_GLASS, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.LIME_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.MAGENTA_STAINED_GLASS, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.MAGENTA_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.ORANGE_STAINED_GLASS, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.ORANGE_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.PINK_STAINED_GLASS, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.PINK_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.PURPLE_STAINED_GLASS, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.PURPLE_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.RED_STAINED_GLASS, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.RED_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.WHITE_STAINED_GLASS, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.WHITE_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.YELLOW_STAINED_GLASS, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.YELLOW_STAINED_GLASS_PANE, RenderType.translucentMovingBlock());
+        createSetRenderType(ModBlocks.GLASS, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.GLASS_PANE, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.BLACK_STAINED_GLASS, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.BLACK_STAINED_GLASS_PANE, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.BLUE_STAINED_GLASS, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.BLUE_STAINED_GLASS_PANE, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.BROWN_STAINED_GLASS, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.BROWN_STAINED_GLASS_PANE, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.CYAN_STAINED_GLASS, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.CYAN_STAINED_GLASS_PANE, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.GRAY_STAINED_GLASS, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.GRAY_STAINED_GLASS_PANE, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.GREEN_STAINED_GLASS, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.GREEN_STAINED_GLASS_PANE, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.LIGHT_BLUE_STAINED_GLASS, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.LIGHT_BLUE_STAINED_GLASS_PANE, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.LIGHT_GRAY_STAINED_GLASS, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.LIGHT_GRAY_STAINED_GLASS_PANE, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.LIME_STAINED_GLASS, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.LIME_STAINED_GLASS_PANE, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.MAGENTA_STAINED_GLASS, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.MAGENTA_STAINED_GLASS_PANE, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.ORANGE_STAINED_GLASS, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.ORANGE_STAINED_GLASS_PANE, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.PINK_STAINED_GLASS, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.PINK_STAINED_GLASS_PANE, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.PURPLE_STAINED_GLASS, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.PURPLE_STAINED_GLASS_PANE, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.RED_STAINED_GLASS, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.RED_STAINED_GLASS_PANE, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.WHITE_STAINED_GLASS, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.WHITE_STAINED_GLASS_PANE, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.YELLOW_STAINED_GLASS, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.YELLOW_STAINED_GLASS_PANE, ChunkSectionLayer.TRANSLUCENT);
 
-        createSetRenderType(ModBlocks.IRON_BARS, RenderType.cutout());
+        createSetRenderType(ModBlocks.IRON_BARS, ChunkSectionLayer.CUTOUT);
 
-        createSetRenderType(ModBlocks.ACACIA_LEAVES, RenderType.cutout());
-        createSetRenderType(ModBlocks.BIRCH_LEAVES, RenderType.cutout());
-        createSetRenderType(ModBlocks.DARK_OAK_LEAVES, RenderType.cutout());
-        createSetRenderType(ModBlocks.JUNGLE_LEAVES, RenderType.cutout());
-        createSetRenderType(ModBlocks.MANGROVE_ROOTS, RenderType.cutout());
-        createSetRenderType(ModBlocks.OAK_LEAVES, RenderType.cutout());
-        createSetRenderType(ModBlocks.SPRUCE_LEAVES, RenderType.cutout());
+        createSetRenderType(ModBlocks.ACACIA_LEAVES, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.BIRCH_LEAVES, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.DARK_OAK_LEAVES, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.JUNGLE_LEAVES, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.MANGROVE_ROOTS, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.OAK_LEAVES, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.SPRUCE_LEAVES, ChunkSectionLayer.CUTOUT);
 
-        createSetRenderType(ModBlocks.BROWN_MUSHROOM, RenderType.cutout());
-        createSetRenderType(ModBlocks.RED_MUSHROOM, RenderType.cutout());
-        createSetRenderType(ModBlocks.COBWEB, RenderType.cutout());
-        createSetRenderType(ModBlocks.LADDER, RenderType.cutout());
+        createSetRenderType(ModBlocks.BROWN_MUSHROOM, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.RED_MUSHROOM, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.COBWEB, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.LADDER, ChunkSectionLayer.CUTOUT);
 
-        createSetRenderType(ModBlocks.ACACIA_DOOR, RenderType.cutout());
-        createSetRenderType(ModBlocks.BIRCH_DOOR, RenderType.cutout());
-        createSetRenderType(ModBlocks.DARK_OAK_DOOR, RenderType.cutout());
-        createSetRenderType(ModBlocks.JUNGLE_DOOR, RenderType.cutout());
-        createSetRenderType(ModBlocks.MANGROVE_DOOR, RenderType.cutout());
-        createSetRenderType(ModBlocks.OAK_DOOR, RenderType.cutout());
-        createSetRenderType(ModBlocks.SPRUCE_DOOR, RenderType.cutout());
-        createSetRenderType(ModBlocks.CRIMSON_DOOR, RenderType.cutout());
-        createSetRenderType(ModBlocks.WARPED_DOOR, RenderType.cutout());
-        createSetRenderType(ModBlocks.CHERRY_DOOR, RenderType.cutout());
-        createSetRenderType(ModBlocks.BAMBOO_DOOR, RenderType.cutout());
+        createSetRenderType(ModBlocks.ACACIA_DOOR, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.BIRCH_DOOR, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.DARK_OAK_DOOR, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.JUNGLE_DOOR, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.MANGROVE_DOOR, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.OAK_DOOR, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.SPRUCE_DOOR, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.CRIMSON_DOOR, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.WARPED_DOOR, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.CHERRY_DOOR, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.BAMBOO_DOOR, ChunkSectionLayer.CUTOUT);
 
-        createSetRenderType(ModBlocks.ACACIA_TRAPDOOR, RenderType.cutout());
-        createSetRenderType(ModBlocks.BIRCH_TRAPDOOR, RenderType.cutout());
-        createSetRenderType(ModBlocks.DARK_OAK_TRAPDOOR, RenderType.cutout());
-        createSetRenderType(ModBlocks.JUNGLE_TRAPDOOR, RenderType.cutout());
-        createSetRenderType(ModBlocks.MANGROVE_TRAPDOOR, RenderType.cutout());
-        createSetRenderType(ModBlocks.OAK_TRAPDOOR, RenderType.cutout());
-        createSetRenderType(ModBlocks.SPRUCE_TRAPDOOR, RenderType.cutout());
-        createSetRenderType(ModBlocks.CRIMSON_TRAPDOOR, RenderType.cutout());
-        createSetRenderType(ModBlocks.WARPED_TRAPDOOR, RenderType.cutout());
-        createSetRenderType(ModBlocks.CHERRY_TRAPDOOR, RenderType.cutout());
-        createSetRenderType(ModBlocks.BAMBOO_TRAPDOOR, RenderType.cutout());
+        createSetRenderType(ModBlocks.ACACIA_TRAPDOOR, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.BIRCH_TRAPDOOR, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.DARK_OAK_TRAPDOOR, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.JUNGLE_TRAPDOOR, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.MANGROVE_TRAPDOOR, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.OAK_TRAPDOOR, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.SPRUCE_TRAPDOOR, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.CRIMSON_TRAPDOOR, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.WARPED_TRAPDOOR, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.CHERRY_TRAPDOOR, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.BAMBOO_TRAPDOOR, ChunkSectionLayer.CUTOUT);
 
-        createSetRenderType(ModBlocks.CRIMSON_ROOTS, RenderType.cutout());
-        createSetRenderType(ModBlocks.WARPED_ROOTS, RenderType.cutout());
-        createSetRenderType(ModBlocks.LANTERN, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.SOUL_LANTERN, RenderType.translucentMovingBlock());
-        createSetRenderType(ModBlocks.SPECIAL_LANTERN, RenderType.cutout());
-        createSetRenderType(ModBlocks.SPECIAL_SOUL_LANTERN, RenderType.cutout());
-        createSetRenderType(ModBlocks.LILY_PAD, RenderType.cutout());
-        createSetRenderType(ModBlocks.NETHER_SPROUTS, RenderType.cutout());
-        createSetRenderType(ModBlocks.NETHER_WART_BLOCK, RenderType.cutout());
-        createSetRenderType(ModBlocks.VINE, RenderType.cutout());
-        createSetRenderType(ModBlocks.WARPED_WART_BLOCK, RenderType.cutout());
-        createSetRenderType(ModBlocks.CRIMSON_FUNGUS, RenderType.cutout());
-        createSetRenderType(ModBlocks.WARPED_FUNGUS, RenderType.cutout());
-        createSetRenderType(ModBlocks.POINTED_DRIPSTONE, RenderType.cutout());
-        createSetRenderType(ModBlocks.TORCH.getFirst(), RenderType.cutout());
-        createSetRenderType(ModBlocks.TORCH.getSecond(), RenderType.cutout());
-        createSetRenderType(ModBlocks.REDSTONE_TORCH.getFirst(), RenderType.cutout());
-        createSetRenderType(ModBlocks.REDSTONE_TORCH.getSecond(), RenderType.cutout());
+        createSetRenderType(ModBlocks.CRIMSON_ROOTS, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.WARPED_ROOTS, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.LANTERN, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.SOUL_LANTERN, ChunkSectionLayer.TRANSLUCENT);
+        createSetRenderType(ModBlocks.SPECIAL_LANTERN, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.SPECIAL_SOUL_LANTERN, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.LILY_PAD, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.NETHER_SPROUTS, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.NETHER_WART_BLOCK, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.VINE, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.WARPED_WART_BLOCK, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.CRIMSON_FUNGUS, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.WARPED_FUNGUS, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.POINTED_DRIPSTONE, ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.TORCH.getFirst(), ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.TORCH.getSecond(), ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.REDSTONE_TORCH.getFirst(), ChunkSectionLayer.CUTOUT);
+        createSetRenderType(ModBlocks.REDSTONE_TORCH.getSecond(), ChunkSectionLayer.CUTOUT);
     }
 
-    private static void createSetRenderType(ResourcefulRegistry<Block> registry, RenderType type) {
-        registry.getEntries().forEach(b -> registerBlockRenderType(type, b));
+    private static void createSetRenderType(ResourcefulRegistry<Block> registry, ChunkSectionLayer layer) {
+        registry.getEntries().forEach(b -> registerBlockRenderType(layer, b));
     }
 
     @ExpectPlatform
-    public static void registerBlockRenderType(RenderType type, Supplier<Block> block) {
+    public static void registerBlockRenderType(ChunkSectionLayer layer, Supplier<Block> block){ 
         throw new NotImplementedException();
     }
 }
