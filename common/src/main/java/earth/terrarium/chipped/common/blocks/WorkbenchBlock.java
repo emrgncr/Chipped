@@ -83,7 +83,8 @@ public class WorkbenchBlock extends HorizontalDirectionalBlock {
         if (!level.isClientSide) {
             BlockPos blockpos = pos.relative(state.getValue(FACING).getClockWise());
             level.setBlock(blockpos, state.setValue(MODEL_TYPE, WorkbenchModelType.SIDE), Block.UPDATE_ALL);
-            level.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
+            level.sendBlockUpdated(pos, level.getBlockState(pos), level.getBlockState(pos), Block.UPDATE_ALL);
+            // level.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
             state.updateNeighbourShapes(level, pos, Block.UPDATE_ALL);
         }
     }

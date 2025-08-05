@@ -1,7 +1,12 @@
 package earth.terrarium.chipped.common.menus;
 
+import earth.terrarium.chipped.Chipped;
+import earth.terrarium.chipped.common.recipes.ChippedRecipe;
 import earth.terrarium.chipped.common.registry.ModMenuTypes;
 import earth.terrarium.chipped.common.registry.ModRecipeTypes;
+import net.minecraft.client.Minecraft;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.StringUtil;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
@@ -11,17 +16,25 @@ import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingInput;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeManager;
+import net.minecraft.world.item.crafting.RecipeMap;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.slf4j.LoggerFactory;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 public class WorkbenchMenu extends AbstractContainerMenu {
     protected final Inventory inventory;
     protected final Level level;
+    protected final ServerLevel serverLevel;
 
     private int selectedStackId;
     private ItemStack selectedStack = ItemStack.EMPTY;
@@ -33,6 +46,21 @@ public class WorkbenchMenu extends AbstractContainerMenu {
     public WorkbenchMenu(int containerId, Inventory inventory) {
         super(ModMenuTypes.WORKBENCH.get(), containerId);
         this.inventory = inventory;
+        var logger = LoggerFactory.getLogger(Chipped.MOD_ID);
+        if (inventory.player.getServer() != null) {
+            // Multiplayer or dedicated server
+            this.serverLevel = inventory.player.getServer().getLevel(inventory.player.level().dimension());
+        } else {
+            // Singleplayer - use Minecraft instance
+            logger.warn("ABC");
+            MinecraftServer server = Minecraft.getInstance().getSingleplayerServer();
+            logger.warn("DEF");
+            this.serverLevel = server.getLevel(inventory.player.level().dimension());
+            logger.warn("GEH");
+        }
+        logger.warn(
+            String.format("Server level is null: %b", serverLevel == null
+            ));
         this.level = inventory.player.level();
         addPlayerInvSlots();
     }
@@ -87,19 +115,33 @@ public class WorkbenchMenu extends AbstractContainerMenu {
         this.filter = filter;
         CraftingInput craftingInput = CraftingInput.of(1, 1, List.of(selectedStack));
 
-//
-//
-//        level.getRecipeManager()
-//            .getRecipeFor(ModRecipeTypes.WORKBENCH.get(), craftingInput, level).ifPresentOrElse(recipe -> {
-//                results.clear();
-//                recipe.value().getResults(craftingInput.getItem(0)).forEach(result -> {
-//                    if (filter == null
-//                        || StringUtil.isBlank(filter)
-//                        || result.getDisplayName().getString().toLowerCase(Locale.ROOT).contains(filter.toLowerCase(Locale.ROOT))) {
-//                        results.add(result);
-//                    }
-//                });
-//            }, this::reset);
+        var recipeManager = serverLevel.recipeAccess();
+        try {
+        
+        Field recipesField = RecipeManager.class.getDeclaredField("recipes");
+        recipesField.setAccessible(true); // Bypass private modifier
+
+        // Get the value
+        RecipeMap recipeMap = (RecipeMap) recipesField.get(recipeManager);
+
+        var allMatchingRecipes = recipeMap.getRecipesFor(ModRecipeTypes.WORKBENCH.get(), craftingInput, level);
+        
+        results.clear();
+        allMatchingRecipes.map(
+            holder -> holder.value().assemble(craftingInput, level.registryAccess())
+        ).forEach(
+            result -> {if (filter == null
+                       || StringUtil.isBlank(filter)
+                       || result.getDisplayName().getString().toLowerCase(Locale.ROOT).contains(filter.toLowerCase(Locale.ROOT))) {
+                       results.add(result);
+                   }}
+        );
+        if (results.isEmpty()) {
+            this.reset();
+        }
+        } catch(Exception e) {
+            throw new NullPointerException(e.toString());
+        }
     }
 
     public void craft(ItemStack stack, boolean replaceAll) {

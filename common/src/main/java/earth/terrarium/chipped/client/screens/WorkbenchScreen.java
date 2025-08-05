@@ -28,10 +28,12 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.IronBarsBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import org.lwjgl.glfw.GLFW;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class WorkbenchScreen extends AbstractContainerCursorScreen<WorkbenchMenu> {
     private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Chipped.MOD_ID, "textures/gui/container/workbench.png");
@@ -144,6 +146,10 @@ public class WorkbenchScreen extends AbstractContainerCursorScreen<WorkbenchMenu
         int top = (height - imageHeight) / 2;
         grid = new GridLayout(left + 85, top + 41);
         var results = menu.results();
+        var logger = LoggerFactory.getLogger(Chipped.MOD_ID);
+        logger.warn(
+            String.format("Adding slot widgets for %s, search : [%s], result: [%s]\n", this.title.getString(), this.searchBox.getValue(), results.stream().map(x -> x.getItemName().getString()).collect(Collectors.toList())
+            ));
         int rows = Math.max(6, Mth.ceil(results.size() / 9f));
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < rows; j++) {
